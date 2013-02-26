@@ -1,15 +1,14 @@
 /* 
 
-Original code from cyragia on Instructables (http://www.instructables.com/id/Fading-RGB-LED-Arduino/step3/Code/)
-Slightly modified by Eric Weinhoffer.
-Assembly instructions are available on Make Projects.
+Original code from cyragia on Instructables (http://www.instructables.com/id/Fading-RGB-LED-Arduino/step3/Code/), slightly modified by Eric Weinhoffer.
+Assembly instructions are available on Make Projects (http://makeprojects.com/Project/Use+a+Common+Anode+RGB+LED/3415/).
 
 */
 
 #define GREEN 3
 #define BLUE 5
 #define RED 6
-#define delayTime 20 // increase this value to increase the fading time between colors
+#define delayTime 15 // increase this value to increase the fading time between colors
 
 void setup() 
 {
