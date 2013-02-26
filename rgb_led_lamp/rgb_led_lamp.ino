@@ -1,65 +1,65 @@
-/*
+/* 
 
-Sample RGB Code for the Ultimate Microcontroller Pack
-Code by alpinenapo on Make Projects. 
-Build instructions here: http://makeprojects.com/Project/RGB+LED+Lamp/1144/1#.UQxTW1pdfNo
+Original code from cyragia on Instructables (http://www.instructables.com/id/Fading-RGB-LED-Arduino/step3/Code/)
+Slightly modified by Eric Weinhoffer.
+Assembly instructions are available on Make Projects.
 
 */
 
+#define GREEN 3
+#define BLUE 5
+#define RED 6
+#define delayTime 20 // increase this value to increase the fading time between colors
 
-#define red 9  // Red pin connected to pin 9
-#define green 6 // Green pin connected to pin 9
-#define blue 5 // Blue pin connected to pin 9
-
-int val = 8 ; // It's the value for delay used between every for cicle
-int di = 254; // It's the intensity of led
-int i = 0; 
-int rit = 1200;
-
-void setup () {
-  // The three pins of rgb led, used for OUTPUT
-  pinMode ( red , OUTPUT );
-  pinMode ( green , OUTPUT );
-  pinMode ( blue , OUTPUT );
-  
+void setup() 
+{
+  pinMode(GREEN, OUTPUT);
+  pinMode(BLUE, OUTPUT);
+  pinMode(RED, OUTPUT);
+  digitalWrite(GREEN, HIGH);
+  digitalWrite(BLUE, HIGH);
+  digitalWrite(RED, HIGH);
 }
 
-void loop () { 
-  
-  for ( i = 0 ; i < di ; i++) {
-    analogWrite ( red , i );
-    delay ( val );
+int redVal;
+int blueVal;
+int greenVal;
+ 
+void loop() 
+{
+  redVal = 255; // choose a value between 1 and 255 to change the color. 
+  blueVal = 0;
+  greenVal = 0;
+  for(int i = 0; i < 255; i += 1) // fades out of red and into full (i = 255) green
+  {
+    greenVal += 1;
+    redVal -= 1;
+    analogWrite(GREEN, 255 - greenVal);
+    analogWrite(RED, 255 - redVal);
+    delay(delayTime);
   }
-   
-  delay ( rit );
-  
-  for ( i = di ; i > 0 ; i--) {
-    analogWrite ( red , i );
-    delay ( val );
-  }   
-  
-  for ( i = 0 ; i < di ; i++) {
-    analogWrite ( green , i );
-    delay ( val );
+ 
+  redVal = 0;
+  blueVal = 0;
+  greenVal = 255;
+  for(int i = 0; i < 255; i += 1)
+  {
+    blueVal += 1;
+    greenVal -= 1;
+    analogWrite(BLUE, 255 - blueVal);
+    analogWrite(GREEN, 255 - greenVal);
+    delay(delayTime);
   }
-   
-  delay ( rit ); 
-   
-  for ( i = di ; i > 0 ; i--) {
-    analogWrite ( green , i );
-    delay ( val );
-  }   
-  
-  for ( i = 0 ; i < di ; i++) {
-    analogWrite ( blue , i );
-    delay ( val );
+ 
+  redVal = 0;
+  blueVal = 255;
+  greenVal = 0;
+  for(int i = 0; i < 255; i += 1)
+  {
+    redVal += 1;
+    blueVal -= 1;
+    analogWrite(RED, 255 - redVal);
+    analogWrite(BLUE, 255 - blueVal);
+    delay(delayTime);
   }
-   
-  delay ( rit );
-   
-  for ( i = di ; i > 0 ; i--) {
-    analogWrite ( blue , i );
-    delay ( val );
-  }   
 }
-
