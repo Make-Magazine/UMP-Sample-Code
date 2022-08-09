@@ -1,7 +1,7 @@
 /*
 
 Ultimate Microcontroller Pack Sample Code - Using a 5V Motor with the Arduino
-For build instructions, head over to Make Projects: http://makeprojects.com/Project/Control+a+5V+Motor+with+the+Arduino/3270/1#.UQxOI1pdfNo
+For build instructions, head over to Make Projects: https://archive.org/details/Arduino-2013-02-27--16-37-17/Control-a-5V-Motor-with-the-Arduino/
 
 Upon uploading, open the serial monitor and type in a motor speed, from 0 to 255.
 
